@@ -1,0 +1,50 @@
+name: trader
+version: "1.0.0"
+description: Multi-agent trading system for prediction markets and financial analysis
+status: active
+
+dependencies:
+  - shared.core.config
+  - shared.db.session
+  - knowledge (market history)
+  - system (multi-agent)
+
+models:
+  - market
+  - position
+  - strategy
+  - order
+
+services:
+  - market_data
+  - trading
+  - strategy_engine
+  - multi_agent_orchestrator
+
+routes:
+  - markets
+  - positions
+  - orders
+  - strategies
+  - backtest
+  - analytics
+
+config:
+  default_exchange: kalshi
+  max_position_size: 1000
+  risk_limit: 0.05
+  paper_trading: true
+
+integrations:
+  - kalshi_api: kalshi_python_async
+  - knowledge: market history storage
+  - system: multi-agent orchestration
+
+llm_routing:
+  default: nemotron-3-super (reasoning)
+  fast_analysis: qwen3.5-35b-a3b
+  fallback: glm-5 (complex analysis)
+
+health_check:
+  database: shared.db.session.check_connection
+  kalshi_api: services.market_data.check_api
