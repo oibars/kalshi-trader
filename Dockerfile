@@ -13,8 +13,9 @@ COPY pyproject.toml .
 COPY src/ src/
 
 # Install dependencies
-RUN pip install --no-cache-dir fastapi uvicorn pydantic httpx structlog
+RUN pip install --no-cache-dir -e .
 
 EXPOSE 8002
 
-CMD ["uvicorn", "kalshi_trader.app:app", "--host", "0.0.0.0", "--port", "8002"]
+# Use PORT env var (Railway provides this)
+CMD ["sh", "-c", "uvicorn kalshi_trader.app:app --host 0.0.0.0 --port ${PORT:-8002}"]

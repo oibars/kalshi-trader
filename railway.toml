@@ -1,8 +1,10 @@
-[install]
-cmd = "pip install -e ."
-
 [build]
-builder = "nixpacks"
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
 
-[start]
-cmd = "uvicorn kalshi_trader.app:app --host 0.0.0.0 --port $PORT"
+[deploy]
+startCommand = "uvicorn kalshi_trader.app:app --host 0.0.0.0 --port $PORT"
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
