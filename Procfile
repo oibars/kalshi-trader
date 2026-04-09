@@ -1,0 +1,1 @@
+web: uvicorn kalshi_trader.app:app --host 0.0.0.0 --port $PORT

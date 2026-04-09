@@ -5,18 +5,16 @@ build-backend = "hatchling.build"
 [project]
 name = "kalshi-trader"
 version = "1.0.0"
-description = "Kalshi prediction market trading with multi-agent strategy engine"
+description = "Kalshi prediction market trading API"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.11"
 dependencies = [
     "fastapi>=0.115.0",
+    "uvicorn>=0.30.0",
     "pydantic>=2.0",
     "httpx>=0.26",
     "structlog>=24.0",
-    "langchain>=0.3.0",
-    "langchain-openai>=0.2.0",
-    "langchain-community>=0.3.0",
 ]
 
 [project.optional-dependencies]
