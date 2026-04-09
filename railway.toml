@@ -1,0 +1,18 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "uvicorn kalshi_trader.app:app --host 0.0.0.0 --port 8002"
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
+
+[[deploy.env]]
+name = "KALSHI_API_KEY"
+value = ""
+
+[[deploy.env]]
+name = "PAPER_TRADING"
+value = "true"

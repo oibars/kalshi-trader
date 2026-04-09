@@ -1,0 +1,8 @@
+{
+  "profile": "experimental",
+  "self_regulation": {
+    "max_fixes": 100,
+    "wtf_threshold": 35
+  },
+  "voice": "concise"
+}
