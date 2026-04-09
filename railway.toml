@@ -1,6 +1,5 @@
 [build]
-builder = "dockerfile"
-dockerfilePath = "Dockerfile"
+builder = "nixpacks"
 
 [deploy]
 startCommand = "uvicorn kalshi_trader.app:app --host 0.0.0.0 --port $PORT"
